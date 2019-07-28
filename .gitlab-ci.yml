@@ -1,6 +1,14 @@
+image: ruby
+
+before_script:
+  - apt-get update -qq && apt-get install -y -qq nodejs
+  - ruby -v
+  - which ruby
+  - gem install bundler --no-document
+  - bundle install
+
 e2e:firefox:
   stage: test
-  image: ruby
   services:
     - selenium/standalone-firefox
   script:
@@ -10,3 +18,10 @@ e2e:firefox:
     paths:  
       - reports/
   
+deploy_surge: 
+  stage: deploy
+  before_script: 
+    - npm install --global surge
+  script: 
+    - surge reports/ ruby-cucumber-sample.surge.sh --token $SURGE_TOKEN    
+  when: always    
