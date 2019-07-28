@@ -14,3 +14,6 @@ Run Tests
 ```
 rake 
 ```
+GitLab CI 
+---------
+The project is configured to use GitLab CI, click on badge in project description to view pipeline runs. 
