@@ -6,3 +6,12 @@ e2e:firefox:
   script:
     - rake cleanup
     - rake test
+
+deploy_surge: 
+  stage: deploy
+  image: node
+  before_script: 
+    - npm install --global surge
+  script: 
+    - surge reports/ ruby-cucumber-sample.surge.sh --token $SURGE_TOKEN    
+  when: always    
