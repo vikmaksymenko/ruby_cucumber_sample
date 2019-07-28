@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Given('User is on login page') do
   visit '/login'
   expect(page).to have_content('Login Page')
