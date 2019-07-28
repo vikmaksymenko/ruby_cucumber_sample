@@ -1,0 +1,8 @@
+e2e:firefox:
+  stage: test
+  image: ruby
+  services:
+    - selenium/standalone-firefox
+  script:
+    - rake cleanup
+    - rake test

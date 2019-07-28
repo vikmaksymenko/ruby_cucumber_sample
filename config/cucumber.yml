@@ -1,0 +1,4 @@
+# config/cucumber.yml
+##YAML Template
+---
+default: --format html --out=reports/features_report.html --format pretty 
