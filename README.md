@@ -21,4 +21,6 @@ rake test_firefox
 ```
 CI
 ---
-The project is configured to use Circle CI and Travis CI, click on badges in project description to view pipeline runs. 
+The project is configured to use Circle CI and Travis CI, click on badges in project description to view pipeline runs. Test reports are published by Travis jobs to Surge: 
+* http://ruby-cucumber-sample-chrome.surge.sh/
+* http://ruby-cucumber-sample-firefox.surge.sh/
