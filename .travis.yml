@@ -1,0 +1,34 @@
+language: ruby
+rvm: 2.6.3
+
+dist: xenial
+services:
+  - xvfb
+
+cache:
+  # cache both npm modules and Cypress binary
+  directories:
+    - ~/.npm
+    - ~/.cache
+  override:
+    - npm run dev:install
+    - npm run cy:verify
+
+sudo: required
+services: mongodb
+
+before_install:
+  - npm run dev:install
+  - npm run cy:verify
+  - npm run mongo:restore:local
+
+script: 
+  - nohup npm run dev:run &
+  - npm run wait-for-server
+  - npm run e2e_mochawesome
+
+deploy:
+  skip_cleanup: true
+  provider: surge
+  project: ./mochawesome-report/
+  domain: cypress-demo.surge.sh
