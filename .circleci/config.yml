@@ -35,7 +35,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            rake test
+            cucumber features/*.feature
 
       # collect reports
       - store_test_results:
