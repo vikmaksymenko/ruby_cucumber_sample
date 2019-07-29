@@ -6,26 +6,21 @@ services:
   - xvfb
 
 cache:
-  # cache both npm modules and Cypress binary
-  directories:
-    - ~/.npm
-    - ~/.cache
-  override:
-    - npm run dev:install
-    - npm run cy:verify
+  - bundler
+  - apt
 
 sudo: required
 services: mongodb
 
-before_install:
-  - npm run dev:install
-  - npm run cy:verify
-  - npm run mongo:restore:local
+before_script:
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq google-chrome-stable
+  - rake install
 
 script: 
-  - nohup npm run dev:run &
-  - npm run wait-for-server
-  - npm run e2e_mochawesome
+  - rake test
 
 deploy:
   skip_cleanup: true
