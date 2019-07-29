@@ -19,10 +19,10 @@ before_script:
 
 script: 
   - rake test
-  - mv reports/features_report.html reports/index.html
+  # - mv reports/features_report.html reports/index.html
 
-deploy:
-  skip_cleanup: true
-  provider: surge
-  project: ./reports/
-  domain: ruby-cucumber-sample.surge.sh
+# deploy:
+#   skip_cleanup: true
+#   provider: surge
+#   project: ./reports/
+#   domain: ruby-cucumber-sample.surge.sh
