@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Capybara.app_host = 'https://the-internet.herokuapp.com'
 Capybara.default_driver = :selenium
 Capybara.register_driver :selenium do |app|
