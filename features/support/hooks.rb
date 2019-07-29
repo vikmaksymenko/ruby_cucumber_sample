@@ -3,4 +3,4 @@ Capybara.default_driver = :selenium
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app)
 end
-Capybara.save_path = 'reports/screenshots'
+# Capybara.save_path = 'reports/screenshots'
