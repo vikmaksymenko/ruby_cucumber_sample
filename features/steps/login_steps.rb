@@ -16,10 +16,8 @@ end
 And('User should be in Secure Area') do
   expect(page).to have_text('Secure Area')
   expect(page).to have_current_path('/secure')
-  screenshot_and_save_page
 end
 
 Then('User should see error message {string}') do |message|
   expect(page).to have_text(message)
-  screenshot_and_save_page
 end
