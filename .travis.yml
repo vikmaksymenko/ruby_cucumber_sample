@@ -16,13 +16,13 @@ before_script:
   - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
   - sudo apt-get update -qq
   - sudo apt-get install -qq google-chrome-stable
-  - bundle install
 
 script: 
   - rake test
+  - mv reports/features_report.html reports/index.html
 
 deploy:
   skip_cleanup: true
   provider: surge
-  project: ./mochawesome-report/
-  domain: cypress-demo.surge.sh
+  project: ./reports/
+  domain: ruby-cucumber-sample.surge.sh
