@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
-task :test do
-  system 'bundle exec cucumber'
+task :test_chrome do
+  system 'BROWSER=chrome bundle exec cucumber'
 end
+
+task :test_firefox do
+  system 'BROWSER=firefox bundle exec cucumber'
+end
+
 
 task :validate do
   system 'gem install rubocop'

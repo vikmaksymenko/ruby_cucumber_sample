@@ -14,18 +14,21 @@ cache:
 
 sudo: required
 
-# before_script:
-#   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-#   - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-#   - sudo apt-get update -qq
-#   - sudo apt-get install -qq google-chrome-stable
+env:
+  - BROWSER=chrome
+  - BROWSER=firefox
+
+before_script:
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq google-chrome-stable
 
 script: 
-  - rake test
-  # - mv reports/features_report.html reports/index.html
+  - rake test_$BROWSER
 
-# deploy:
-#   skip_cleanup: true
-#   provider: surge
-#   project: ./reports/
-#   domain: ruby-cucumber-sample.surge.sh
+deploy:
+  skip_cleanup: true
+  provider: surge
+  project: ./reports/
+  domain: ruby-cucumber-sample-$BROWSER.surge.sh
