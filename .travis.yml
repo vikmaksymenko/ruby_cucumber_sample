@@ -18,7 +18,7 @@ before_script:
   - sudo apt-get install -qq google-chrome-stable
 
 script: 
-  - cucumber features/*.feature
+  - rake test
   # - mv reports/features_report.html reports/index.html
 
 # deploy:

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 task :test do
-  system 'cucumber'
+  system 'bundle exec cucumber'
 end
 
 task :validate do
